@@ -32,57 +32,153 @@ L'annuaire Active Directory permet d'organiser les ressources du réseau de mani
 
 Exemple de structure utilisée dans le lab :
 
+```text
 Domaine
 │
-├── Utilisateurs
+├── OU Utilisateurs
 │   ├── Direction
 │   ├── Administration
 │   └── Technique
 │
-├── Groupes
+├── OU Groupes
 │
-├── Ordinateurs
+├── OU Ordinateurs
 │
-└── Serveurs
+└── OU Serveurs
+```
 
-Cette organisation facilite ensuite l'application de stratégies de groupe et la gestion des droits.
+Cette organisation facilite ensuite :
 
-Intégration d'un poste au domaine
+- l'application de stratégies de groupe ;
+- la délégation de certaines tâches administratives ;
+- la gestion des droits ;
+- l'organisation des postes et utilisateurs.
+
+## Création d'utilisateurs et de groupes
+
+La gestion des identités est réalisée depuis la console :
+
+```text
+Active Directory Users and Computers
+```
+
+Les principales opérations comprennent :
+
+1. création d'un utilisateur ;
+2. définition de son identifiant ;
+3. attribution d'un mot de passe initial ;
+4. ajout éventuel à un ou plusieurs groupes ;
+5. placement dans l'OU appropriée.
+
+Les groupes permettent ensuite de gérer plus simplement les droits et les accès aux ressources.
+
+## Intégration d'un poste au domaine
 
 Pour qu'un poste client puisse rejoindre le domaine :
 
-le client doit pouvoir communiquer avec le contrôleur de domaine ;
-son serveur DNS doit pointer vers le DNS du domaine ;
-le nom du domaine doit pouvoir être résolu ;
-le poste est ensuite joint au domaine avec un compte autorisé ;
-après redémarrage, un utilisateur du domaine peut ouvrir une session sur le poste.
-Vérifications et diagnostic
+1. le poste doit pouvoir communiquer avec le contrôleur de domaine ;
+2. son serveur DNS doit pointer vers le DNS du domaine ;
+3. le nom du domaine doit pouvoir être résolu ;
+4. le poste est joint au domaine avec un compte autorisé ;
+5. la machine est redémarrée ;
+6. un utilisateur du domaine peut ensuite ouvrir une session.
 
-Quelques outils et commandes permettent de vérifier le bon fonctionnement de l'environnement :
+Schéma simplifié :
 
-PowerShell:
+```text
+Poste client
+    │
+    │ DNS + réseau
+    ▼
+Contrôleur de domaine
+    │
+    ├── Active Directory
+    └── DNS
+```
+
+## Vérifications et diagnostic
+
+### Configuration réseau
+
+```powershell
 ipconfig /all
--(Affiche notamment la configuration IP et les serveurs DNS utilisés.)
-nslookup
--(Permet de vérifier la résolution DNS.)
-ping 'nom-du-serveur'
--(Permet de vérifier la connectivité réseau et la résolution du nom.)
-whoami
--(Permet d'identifier le compte actuellement utilisé et de vérifier l'ouverture d'une session avec un compte du domaine.)
+```
 
-Compétences mises en pratique
-administration d'Active Directory ;
-gestion des utilisateurs et groupes ;
-organisation d'un annuaire avec des OU ;
-intégration de machines clientes à un domaine ;
-compréhension de la dépendance entre Active Directory et DNS ;
-diagnostic de problèmes d'authentification et de connectivité.
-Documentation à venir
+Permet notamment de vérifier :
+
+- l'adresse IP ;
+- la passerelle ;
+- le serveur DNS utilisé ;
+- le suffixe DNS.
+
+### Résolution DNS
+
+```powershell
+nslookup nom-du-serveur
+```
+
+Permet de vérifier que le nom du serveur est correctement résolu.
+
+### Connectivité
+
+```powershell
+ping nom-du-serveur
+```
+
+Permet de vérifier la connectivité réseau ainsi que la résolution du nom.
+
+### Identité de l'utilisateur
+
+```powershell
+whoami
+```
+
+Permet d'identifier le compte actuellement utilisé.
+
+Exemple :
+
+```text
+MONDOMAINE\utilisateur
+```
+
+### Informations sur le domaine
+
+```powershell
+systeminfo
+```
+
+Cette commande permet notamment de vérifier si la machine appartient à un domaine.
+
+## Points de contrôle en cas de problème
+
+En cas d'échec lors de l'intégration d'un poste au domaine, il est nécessaire de vérifier :
+
+- la configuration IP ;
+- le serveur DNS configuré sur le client ;
+- la résolution du nom de domaine ;
+- la connectivité avec le contrôleur de domaine ;
+- l'heure du poste et du serveur ;
+- les identifiants utilisés ;
+- l'état des services Active Directory et DNS.
+
+## Compétences mises en pratique
+
+- installation d'Active Directory Domain Services ;
+- administration d'un domaine ;
+- gestion des utilisateurs et groupes ;
+- organisation d'un annuaire avec des OU ;
+- intégration de machines clientes au domaine ;
+- compréhension de la relation entre Active Directory et DNS ;
+- utilisation d'outils de diagnostic Windows ;
+- résolution de problèmes d'authentification et de connectivité.
+
+## Documentation à venir
 
 Ce dossier sera progressivement complété avec :
 
-captures d'écran de l'environnement ;
-schéma de l'architecture ;
-exemples d'OU et de groupes ;
-procédures d'administration ;
-scénarios de dépannage.
+- captures d'écran de l'environnement ;
+- schéma complet de l'architecture ;
+- exemples d'OU ;
+- exemples de groupes ;
+- procédures d'administration ;
+- scénarios de dépannage.
