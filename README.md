@@ -14,6 +14,16 @@ L'objectif de ce dépôt est de documenter une infrastructure Windows Server, so
 | 04 | Windows Deployment Services (WDS) | [Voir le lab](./04-wds/) |
 | 05 | Utilisateurs, groupes & intégration au domaine | [Voir le lab](./05-users-groups-domain-join/) |
 
+## Parcours conseillé
+
+Pour progresser dans le lab, il est conseillé de suivre cet ordre :
+
+1. Active Directory : mettre en place le domaine ;
+2. DNS et DHCP : configurer la résolution de noms et l'attribution des paramètres réseau ;
+3. Utilisateurs, groupes et jonction au domaine : organiser les comptes et intégrer les postes clients ;
+4. GPO : appliquer et vérifier les stratégies sur les utilisateurs et les postes du domaine ;
+5. WDS : expérimenter le déploiement de Windows par le réseau.
+
 ## Architecture générale
 
 ```text
