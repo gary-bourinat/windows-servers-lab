@@ -33,7 +33,7 @@ Le statut **Documenté** décrit le contenu disponible, sans confirmer sa valida
 | Jonction au domaine | Prérequis, étapes de jonction et vérifications de session | Documenté | Confirmer la jonction d'un client et une session de domaine |
 | GPO | Création, liaison à une OU et commandes de vérification | Documenté | Tester un paramètre précis et relever son application sur un client |
 | WDS | Installation du rôle, images et déroulement PXE | Documenté | Identifier les images utilisées et consigner le résultat d'un déploiement |
-| PowerShell | Exemple de contrôle du service WDS avec `Get-Service` ; aucun script `.ps1` | À valider dans le lab | Exécuter la commande dans le lab et consigner son résultat |
+| PowerShell | Script `Test-LabConnectivity.ps1` présent ; smoke tests locaux réalisés | À valider dans le lab | Exécuter le script dans le lab Windows Server et consigner les résultats |
 
 ## Parcours conseillé
 
@@ -125,6 +125,14 @@ gpresult /r
 ```
 
 Ces outils permettent notamment de diagnostiquer les problèmes liés au réseau, au DNS, au domaine et aux stratégies de groupe.
+
+## Scripts PowerShell
+
+Le script [Test-LabConnectivity.ps1](./scripts/Test-LabConnectivity.ps1) fournit un diagnostic en lecture seule : inventaire des interfaces IPv4 actives, passerelle et serveurs DNS, test ICMP, résolution DNS facultative et contrôle de services Windows locaux. Il affiche un résumé `OK / WARNING / ERROR`.
+
+Les paramètres et exemples d'utilisation sont décrits dans la [documentation des scripts](./scripts/README.md).
+
+La syntaxe a été vérifiée sous **Windows PowerShell 5.1** et **PowerShell 7.6.6**. Deux smoke tests locaux ont été réalisés sous PowerShell 7.6.6. La validation fonctionnelle dans le lab Windows Server reste à réaliser.
 
 ## Organisation du dépôt
 
