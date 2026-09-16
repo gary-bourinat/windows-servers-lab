@@ -2,7 +2,11 @@
 
 Lab personnel autour de **Windows Server 2022** et des principaux services d'infrastructure Microsoft.
 
-L'objectif de ce dépôt est de documenter une infrastructure Windows Server, son administration et les procédures de diagnostic associées.
+## Objectif du lab
+
+Documenter les services Windows Server, leur administration et leur diagnostic dans un parcours d'apprentissage **Systèmes & Réseaux**.
+
+Ce dépôt présente un lab pédagogique Windows Server 2022, et non une infrastructure de production.
 
 ## Sommaire
 
@@ -13,6 +17,23 @@ L'objectif de ce dépôt est de documenter une infrastructure Windows Server, so
 | 03 | Group Policy Objects (GPO) | [Voir le lab](./03-gpo/) |
 | 04 | Windows Deployment Services (WDS) | [Voir le lab](./04-wds/) |
 | 05 | Utilisateurs, groupes & intégration au domaine | [Voir le lab](./05-users-groups-domain-join/) |
+
+## État du lab
+
+Le dépôt contient des explications, des procédures générales et des exemples de commandes. Les procédures sont documentées ; les validations et preuves d'exécution seront ajoutées progressivement.
+
+Le statut **Documenté** décrit le contenu disponible, sans confirmer sa validation dans le lab. Les prochaines validations restent à réaliser ou à fournir.
+
+| Domaine | Ce qui est documenté | État | Prochaine validation |
+|---|---|---|---|
+| Active Directory | Rôle AD DS, étapes de promotion et organisation des OU | Documenté | Vérifier le domaine et relever les OU réellement créées |
+| DNS | Résolution de noms, cache et commandes de diagnostic | Documenté | Consigner une résolution depuis un client avec le DNS du domaine |
+| DHCP | Création d'une étendue, exemple fictif et processus DORA | Documenté | Vérifier un bail et les paramètres reçus par un client |
+| Utilisateurs et groupes | Création de comptes, groupes et principes d'attribution des droits | Documenté | Vérifier une appartenance à un groupe et un accès associé |
+| Jonction au domaine | Prérequis, étapes de jonction et vérifications de session | Documenté | Confirmer la jonction d'un client et une session de domaine |
+| GPO | Création, liaison à une OU et commandes de vérification | Documenté | Tester un paramètre précis et relever son application sur un client |
+| WDS | Installation du rôle, images et déroulement PXE | Documenté | Identifier les images utilisées et consigner le résultat d'un déploiement |
+| PowerShell | Exemple de contrôle du service WDS avec `Get-Service` ; aucun script `.ps1` | À valider dans le lab | Exécuter la commande dans le lab et consigner son résultat |
 
 ## Parcours conseillé
 
@@ -61,7 +82,7 @@ Pour progresser dans le lab, il est conseillé de suivre cet ordre :
 - VirtualBox
 - TCP/IP
 
-## Compétences mises en pratique
+## Compétences abordées
 
 - installation et configuration de Windows Server ;
 - création et administration d'un domaine Active Directory ;
@@ -77,7 +98,7 @@ Pour progresser dans le lab, il est conseillé de suivre cet ordre :
 
 ## Outils de diagnostic
 
-Plusieurs commandes sont utilisées dans les différents labs :
+Plusieurs commandes sont présentées dans les différents labs :
 
 ```powershell
 ipconfig /all
@@ -142,7 +163,7 @@ La documentation sera progressivement enrichie avec :
 
 ## Objectif professionnel
 
-Ce dépôt fait partie de mon portfolio technique et présente des compétences pratiques en administration **Systèmes & Réseaux**, avec une attention particulière portée à la compréhension de l'infrastructure, à la documentation et au diagnostic.
+Ce dépôt fait partie de mon portfolio technique en **Systèmes & Réseaux**. Il présente mon parcours d'apprentissage, avec une attention portée à la documentation et au diagnostic.
 
 ---
 
